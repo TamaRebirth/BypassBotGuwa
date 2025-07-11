@@ -1,23 +1,24 @@
 const axios = require('axios');
 
-const RAW_URL = 'https://raw.githubusercontent.com/TamaRebirth/BypassBotGuwa/main/tokens.json';
-const GITHUB_TOKEN = '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'; // bisa kamu hardcode atau hapus kalau file public
+const RAW_URL = 'https://raw.githubusercontent.com/TamaRebirth/BypassBotGuwa/main/tokens.json'; // ganti jika path berubah
+const GITHUB_TOKEN = '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'; // ganti dengan GitHub token kamu (wajib kalau repo private)
 
-exports.isTokenValid = async function(token) {
+async function isTokenValid(token) {
   try {
     const res = await axios.get(RAW_URL, {
       headers: {
         Authorization: `token ${GITHUB_TOKEN}`,
-        'User-Agent': 'Validator'
+        'User-Agent': 'TamaBotValidator'
       }
     });
 
-    const content = res.data.tokens || [];
-    return content.includes(token);
+    const list = res.data.tokens || [];
+    return list.includes(token);
   } catch (err) {
-    console.error('[AUTHEN] Error saat validasi:', err.message);
+    console.error('[AUTHEN] Gagal membaca tokens.json dari GitHub:', err.message);
     return false;
   }
-};
+}
 
+// ⛔ PENTING! Ekspor fungsi agar bisa dibaca di index.js lewat eval
 exports.isTokenValid = isTokenValid;
