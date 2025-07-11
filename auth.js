@@ -19,3 +19,5 @@ exports.isTokenValid = async function(token) {
     return false;
   }
 };
+
+exports.isTokenValid = isTokenValid;
