@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const RAW_URL = 'https://raw.githubusercontent.com/TamaRebirth/BypassBotGuwa/main/.hidden/tokens.json';
+const RAW_URL = 'https://raw.githubusercontent.com/TamaRebirth/BypassBotGuwa/main/tokens.json';
 const GITHUB_TOKEN = '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'; // ganti dengan token GitHub kamu jika repo private
 
 async function isTokenValid(token) {
