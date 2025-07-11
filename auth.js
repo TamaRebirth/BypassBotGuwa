@@ -7,6 +7,7 @@ async function isTokenValid(token) {
   try {
     const res = await axios.get(RAW_URL, {
       headers: {
+        Authorization: `token ${GITHUB_TOKEN}`,
         'User-Agent': 'TamaBot'
       }
     });
